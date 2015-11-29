@@ -2,7 +2,16 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <title>5374(ｺﾞﾐﾅｼ).jp 静岡市清水区</title> 
+    
+    <meta property="og:title" content="5374.jp静岡市清水区(由比・蒲原以外)版" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://5374-shizuoka-abe6.github.io/5374-shizuoka-abe6/" />
+    <meta name="description" content="5374.jpを使えば、いつ、どのゴミが回収されるのか、簡単に知る事ができます。" />
+    <meta name="description" content="Code for Kanazawaの作った5374.jpの静岡県静岡市安倍6地区版です。" />
+    <meta property="og:image" content="http://5374-shizuoka-abe6.github.io/5374-shizuoka-abe6/img/ogp.png" />
+    <meta name="Keywords" content="静岡市,清水区,5374,ごみ,ゴミ収集日" />
+
+    <title>5374(ｺﾞﾐﾅｼ).jp 静岡市清水区(由比・蒲原以外)版</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
@@ -10,54 +19,717 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link href="css/custom.css" rel="stylesheet" media="screen" />
   </head>
-  <body>
-  <style id="accordion-style" type="text/css"></style>
-  <div id="accordion"></div>
-  <select class="form-control" id="select_area"></select>
-  <div class="accordion" id="accordion3">
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">5374.jpについて</a>
-      </div>
-      <div id="collapse3_0" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-ゴミの問題は、どの地域でも深刻になりつつあります。
-Code for Kanazawaでは、先ずは正しいゴミの捨て方に注目しました。
-目的と使い方は、とてもシンプルです。
-            <h2>目的</h2>
-「いつ、どのゴミが収集されているのか？」
-例えばお引っ越しをされた場合や、新しく金沢市に住むことになった時、このアプリを使えば、すぐに分かるようにデザインされています。
-            <h2>使い方</h2>
-            <h3>色でゴミのジャンルを表示</h3>
-            <p>一番近いゴミの日とジャンルを上から順に表示しています。</p>
-            <h3>捨てる事が可能なゴミ</h3>
-            <p>ゴミのジャンルをタップすると、捨てることが可能なゴミの一覧を見ることができます</p>
-            <h3>設定</h3>
-            <p>お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。</p>
-            <div id="caption">
-              <h4>提供されるゴミ情報について</h4>
-              <p>金沢市が公開しているデータからCfKが独自に解析し、アプリに実装しました。</p>
-              <h4>ライセンスについて</h4>
-              <p>本アプリの著作権はCode for Kanazawaに帰属します。</p>
-            </div>
-            <div id="cfk">
-              <h3>Code for Kanazawaについて</h3>
-              <p>コードで、世界をHappyに。<br />
-各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
-課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br /><br />
-Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
-私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br /><br />
-CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
-公式サイト<br />
-<a href="http://www.codeforkanazawa.org/">http://www.codeforkanazawa.org/</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+	<body>
+	<style id="accordion-style" type="text/css"></style>
+	5374.jp 静岡市清水区(由比・蒲原以外)版
+	<div id="accordion"></div>
+	<select class="form-control" id="select_area"></select>
+
+	<div class="accordion" id="accordion3">
+		<div class="accordion-group-top">
+			<div class="accordion-heading">
+				<a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">ごみの分別を調べる</a>
+			</div>
+			<div id="collapse3_0" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<select id = "hinmoku">
+
+<option value="資源回収">アイロン</option>
+<option value="不燃・粗大(金属部分は資源回収へ)">アイロン台（金属製）</option>
+<option value="可燃ごみ(１ｍを超えるものは不燃・粗大ごみへ)">アイロン台（非金属）</option>
+<option value="不燃・粗大">足こぎ自動車(子どもの玩具）</option>
+<option value="不燃・粗大">アコーディオンカーテン</option>
+<option value="資源回収">穴あけパンチ</option>
+<option value="可燃ごみ(固めるか、紙や布にしみこませて出す)">油（食用油）</option>
+<option value="可燃ごみ(中身を使い切り、油分はできるだけ取る)">油（食用油）のプラスチック容器</option>
+<option value="不燃・粗大(排出が多い場合は縛る　金属製で１ｍ以内のものは資源回収へ)">雨樋（金属・非金属）</option>
+<option value="不燃・粗大(電気式は小型家電でも可)">編み機</option>
+<option value="資源回収(個人で取り外したものに限る　)">網戸</option>
+<option value="可燃ごみ">アルバム</option>
+<option value="不燃・粗大">アルミガード（天ぷらガード）</option>
+<option value="資源回収(個人で取り外したものに限る)">アルミサッシ</option>
+<option value="可燃ごみ">アルミホイル</option>
+<option value="不燃・粗大">アンプ（音を増幅する機械）</option>
+<option value="不燃・粗大(屋外用は分解して出す。パラボラアンテナは小型家電でも可)">アンテナ（パラボラ、パラボラ以外）</option>
+<option value="収集不可(購入店または専門の処理業者に相談)">石</option>
+<option value="不燃・粗大">石臼</option>
+<option value="可燃ごみ(指定袋に入れるか、【不用】と表示して出す)">衣装ケース（一段）</option>
+<option value="不燃・粗大">衣装ケース（多段）</option>
+<option value="資源回収">いす（金属製）</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">いす（木製・プラスチック製）</option>
+<option value="資源回収">一輪車（スポーツ用・ねこ・金属製）</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">衣服</option>
+<option value="不燃・粗大">イヤホン</option>
+<option value="収集不可(家電リサイクル法対象品)">衣類乾燥機</option>
+<option value="可燃ごみ(金属製のものは不燃・粗大ごみへ)">印鑑（木製・プラスチック製）</option>
+<option value="可燃ごみ(リサイクルできるものは販売店等の回収箱へ)">インクカートリッジ</option>
+<option value="不燃・粗大">植木鉢（陶器製）</option>
+<option value="可燃ごみ">植木鉢(プラスチック製）</option>
+<option value="不燃・粗大(電気式は小型家電でも可)">ウォーキングマシン（健康器具）</option>
+<option value="不燃・粗大">臼</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">ウッドデッキ</option>
+<option value="不燃・粗大">乳母車</option>
+<option value="可燃ごみ(指定袋に入れるか、たたんでひもでしばり【不用】と表示して出す)">ウレタンマット</option>
+<option value="不燃・粗大">エアガン（金属製）</option>
+<option value="可燃ごみ">エアガン（非金属製）</option>
+<option value="収集不可(家電リサイクル法対象品)">エアコン</option>
+<option value="不燃・粗大">エアーウォーカー（健康器具）</option>
+<option value="不燃・粗大(（各種ビデオカメラ、各種録音再生デッキ、チューナー))">映像機器</option>
+<option value="可燃ごみ">ＭＤ</option>
+<option value="不燃・粗大">ＭＤプレイヤー</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">ＬＰガスボンベ類</option>
+<option value="不燃・粗大">エレクトーン</option>
+<option value="収集不可(購入店または取扱店に相談。紙や布にしみ込ませれば可燃ごみでも可)">エンジンオイル</option>
+<option value="不燃・粗大">延長コード（室内用）</option>
+<option value="資源回収(オイルは購入店または取扱店、製造メーカーに相談)">オイルヒーター</option>
+<option value="収集不可(二輪車リサイクルシステムへ)">オートバイ</option>
+<option value="資源回収">オーブントースター</option>
+<option value="資源回収">オーブンレンジ（電気）</option>
+<option value="資源回収">オーブンレンジ（ガス）</option>
+<option value="不燃・粗大">置物（像・壺・はく製）</option>
+<option value="可燃ごみ(指定袋に入れて出す。10袋を超える場合は清掃工場に直接持ち込むか、何回かに分けて出す)">落ち葉（木の葉）</option>
+<option value="不燃・粗大(刃は紙等に包み、危険防止措置をして出す。)">斧</option>
+<option value="可燃ごみ(水洗いして出す)">おまる</option>
+<option value="可燃ごみ(汚物は取り除く)">おむつ（紙おむつを含む）</option>
+<option value="不燃・粗大(電池は外す)">おもちゃ（電気・電池等でうごくもの）</option>
+<option value="可燃ごみ">おもちゃ(木製・プラスチック製）</option>
+<option value="不燃・粗大">おもり（釣具）</option>
+<option value="不燃・粗大(大型のものは収集不可。電子オルガンは小型家電でも可)">オルガン（電子オルガンを含む）</option>
+<option value="不燃・粗大(電気式は小型家電でも可)">オルゴール</option>
+<option value="不燃・粗大(中が見える小袋等に入れ、他のものと分けて出す)">温度計（水銀あり）</option>
+<option value="不燃・粗大(電気式は小型家電でも可。電池は外す)">温度計（水銀なし）</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">カーテン</option>
+<option value="不燃・粗大(金属製で１ｍ以内のものは資源回収へ)">カーテンレール</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にしてヒモでしばり、【不用】と表示して出す。1mを超える場合は不燃・粗大ごみへ)">カーペット・じゅうたん</option>
+<option value="不燃・粗大">カーペット(電気式）</option>
+<option value="不燃・粗大(電池は外す)">懐中電灯</option>
+<option value="可燃ごみ">カイロ（使い捨て）</option>
+<option value="不燃・粗大">カイロ（電気式）</option>
+<option value="不燃・粗大">鏡</option>
+<option value="不燃・粗大(電気式は小型家電でも可。プラスチック製は可燃ごみへ)">かき氷機</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">額縁</option>
+<option value="資源回収">家具の一部（金属製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">家具の一部（非金属）</option>
+<option value="資源回収">かご（金属製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">かご（非金属）</option>
+<option value="不燃・粗大(大人1人で持てる程度に束ねる。)">傘</option>
+<option value="資源回収">傘立て（金属製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">傘立て（非金属）</option>
+<option value="不燃・粗大(水は抜く)">加湿器</option>
+<option value="資源回収">ガスコンロ（五徳のみガス用コンロ）</option>
+<option value="資源回収(（テーブルや台上のコンロ、グリル付含む）)">ガステーブル・ガス台</option>
+<option value="資源回収(電池は外す)">ガスファンヒーター</option>
+<option value="資源回収">ガスストーブ</option>
+<option value="不燃・粗大(（硬質金属／ステンレス等、ガスレンジ周りのつい立等）)">ガスレンジカバー</option>
+<option value="資源回収(電池とカセットコンロ用ボンベは外す)">カセットコンロ・ガスコンロ</option>
+<option value="資源回収(ガスを使い切り、火の気のない風通しの良い場所で穴をあけて出す)">カセットコンロ用ボンベ</option>
+<option value="可燃ごみ">カセットテープ</option>
+<option value="不燃・粗大">カセットデッキ</option>
+<option value="収集不可(購入店または取扱店へ相談)">ガソリン</option>
+<option value="不燃・粗大(フルート、トランペット、堅琴、ドラムセット、シンバルなど)">楽器（金属）</option>
+<option value="不燃・粗大(リコーダー、尺八、ギター、バイオリン、ハープ、琴等。可燃性で１ｍ以内のものは可燃ごみへ)">楽器（非金属）</option>
+<option value="不燃・粗大(刃は紙等に包み、危険防止措置をして出す)">カッター</option>
+<option value="可燃ごみ(水気を切って出す)">カップ麺の容器</option>
+<option value="資源回収">かばん（金属製）</option>
+<option value="可燃ごみ(指定袋に入らないものは【不用】と表示して出す。１ｍを超える大型のものは不燃・粗大ごみへ)">かばん（非金属）</option>
+<option value="資源回収">花瓶（金属製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">花瓶（非金属）</option>
+<option value="可燃ごみ">紙コップ・紙皿</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">紙芯（トイレットペーパー等）</option>
+<option value="不燃・粗大(刃を紙等に包み、危険防止措置をして出す)">鎌</option>
+<option value="不燃・粗大(刃を紙等に包み、危険防止措置をして出す)">カミソリ</option>
+<option value="可燃ごみ">紙粘土</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">紙箱（食料品・日用品等）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">紙パック</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">紙袋</option>
+<option value="可燃ごみ">ガムテープ（布ガムテープを含む）</option>
+<option value="不燃・粗大(電池は外す)">カメラ</option>
+<option value="不燃・粗大">カメラレンズ</option>
+<option value="可燃ごみ(指定袋に入らないものは【不用】と表示して出す。１ｍを超える大型のものは不燃・粗大ごみへ)">カラーボックス</option>
+<option value="不燃・粗大">ガラス</option>
+<option value="不燃・粗大">カラオケセット</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">カレンダー</option>
+<option value="可燃ごみ(指定袋に入らないものは【不用】と表示して出す。１ｍを超える大型のものは不燃・粗大ごみへ)">革製品</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">瓦</option>
+<option value="資源回収(錆や汚れがひどい場合は不燃・粗大へ)">アルミ缶</option>
+<option value="資源回収(錆や汚れがひどい場合は不燃・粗大へ)">スチール缶</option>
+<option value="資源回収(油分を取り除いて出す　錆や汚れがひどい場合は不燃・粗大へ)">油の缶</option>
+<option value="資源回収(事業用は回収不可)">一斗缶（家庭用）</option>
+<option value="資源回収(錆や汚れがひどい場合は不燃・粗大へ)">お茶の缶</option>
+<option value="資源回収(錆や汚れがひどい場合は不燃・粗大へ)">菓子・海苔・ミルク等の缶</option>
+<option value="資源回収(必ず穴をあけて出す　錆や汚れがひどい場合は不燃・粗大へ)">スプレー缶</option>
+<option value="資源回収(中身をふき取って出す　錆や汚れがひどい場合は不燃・粗大へ)">ペンキの缶</option>
+<option value="資源回収">缶のふた（金属）</option>
+<option value="不燃・粗大">換気扇</option>
+<option value="不燃・粗大(可燃性で１ｍ以内のものは可燃ごみへ　金属製で１ｍ以内のものは資源回収へ)">換気扇フード（金属・非金属）</option>
+<option value="不燃・粗大">乾燥機（衣類乾燥機を除く）</option>
+<option value="可燃ごみ">乾燥剤（シリカゲル）</option>
+<option value="不燃・粗大">乾電池（マンガン・アルカリ）</option>
+<option value="可燃ごみ">感熱紙</option>
+<option value="可燃ごみ(太さ20cm以内・長さ1m以内にして指定袋に入れるか、束ねて出す)">木（枝・幹・根）</option>
+<option value="可燃ごみ(長さ1m以内にして指定袋に入れるか、束ねて出す)">木の板</option>
+<option value="可燃ごみ(太さ20cm以内・長さ1m以内にして指定袋に入れるか、束ねて出す)">木の棒</option>
+<option value="不燃・粗大">ギター（エレキ）</option>
+<option value="不燃・粗大">ギター（クラシック）</option>
+<option value="不燃・粗大">ギターアンプ</option>
+<option value="不燃・粗大">キックボード（金属）</option>
+<option value="不燃・粗大">キーボード（楽器）</option>
+<option value="不燃・粗大(パソコンリサイクルと同時に申し込みも可能)">キーボード(パソコン）</option>
+<option value="可燃ごみ(長さ1mを超えるものは不燃・粗大ごみへ)">杵（きね）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">牛乳パック</option>
+<option value="不燃・粗大(金属製で１ｍ以内のものは資源回収へ)">キャリア（車用品）　（金属・非金属）</option>
+<option value="不燃・粗大(プラスチック製で１ｍ以内のものは可燃ごみへ（金属製で１ｍ以内のものは資源回収へ）)">キャリーカート</option>
+<option value="不燃・粗大(可燃性のもので１ｍ以内は可燃ごみへ（金属製で１ｍ以内のものは資源回収へ）)">キャリー（バッグ付含む）（金属・非金属）</option>
+<option value="不燃・粗大(可燃性のもので１ｍ以内は可燃ごみへ（金属製で１ｍ以内のものは資源回収へ）)">キャンプ用品（いす）　（金属・非金属）</option>
+<option value="不燃・粗大(生地部分は可燃ごみへ)">キャンプ用品（タープ）</option>
+<option value="不燃・粗大(可燃性のもので１ｍ以内は可燃ごみへ（金属製で１ｍ以内のものは資源回収へ）)">キャンプ用品（テーブル）　（金属・非金属）</option>
+<option value="不燃・粗大(生地部分は可燃ごみへ)">キャンプ用品（テント）</option>
+<option value="不燃・粗大">キャンプ用品（パラソル）</option>
+<option value="不燃・粗大(金属製で１ｍ以内のものは資源回収へ)">キャンプ用品（バーベキュー台）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">教科書</option>
+<option value="不燃・粗大">鏡台・ドレッサー</option>
+<option value="不燃・粗大">金魚鉢（ガラス製）</option>
+<option value="可燃ごみ">金魚鉢（プラスチック製）</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談　)">金庫（耐火）</option>
+<option value="不燃・粗大">金庫（手提げ）</option>
+<option value="不燃・粗大">空気清浄機</option>
+<option value="資源回収">空気入れ（金属）</option>
+<option value="可燃ごみ">空気入れ（非金属）</option>
+<option value="可燃ごみ(金属製のもの、1mを超えるものは不燃・粗大ごみへ)">クーラーボックス（プラスチック製）</option>
+<option value="不燃・粗大(先端は紙等に包み、危険防止措置をして出す)">釘・クリップ</option>
+<option value="可燃ごみ(土はできるだけ落として指定袋に入れるか、束ねて出す。１度に１０袋又は、１０束まで。)">草</option>
+<option value="不燃・粗大(農業用・事業用は収集不可)">草刈機(燃料式)</option>
+<option value="不燃・粗大(農業用・事業用は収集不可)">草刈機（電気式）</option>
+<option value="資源回収(プラスチック製は可燃ごみへ)">鎖（金属製）</option>
+<option value="可燃ごみ(先端は紙等に包み、危険防止措置をして出す)">串</option>
+<option value="可燃ごみ">靴</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にしてヒモでしばり【不用】と表示して出す)">クッション</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">グリス</option>
+<option value="不燃・粗大(可燃性のもので１ｍ以内は可燃ごみへ)">クリスマスツリー（金属・非金属）</option>
+<option value="可燃ごみ">クレヨン</option>
+<option value="可燃ごみ">グローブ</option>
+<option value="不燃・粗大(刃は紙等に包み、危険防止措置をして出す)">鍬・すき</option>
+<option value="不燃・粗大">蛍光管・蛍光灯</option>
+<option value="不燃・粗大(販売店等で回収している場合はできるだけそちらへ)">携帯電話</option>
+<option value="不燃・粗大">ゲーム機（家庭用）</option>
+<option value="可燃ごみ">ゲームソフト</option>
+<option value="可燃ごみ">毛皮製品（ムートンを含む）</option>
+<option value="資源回収">化粧品のケース（金属製）</option>
+<option value="可燃ごみ">化粧品のケース（プラスチック製）</option>
+<option value="不燃・粗大">化粧品のびん</option>
+<option value="不燃・粗大(中身は空にして出す)">げた箱（金属・非金属）</option>
+<option value="不燃・粗大(中が見える小袋等に入れ、他のものと分けて出す)">血圧計（水銀あり）</option>
+<option value="不燃・粗大(電池は外す)">血圧計（水銀なし）</option>
+<option value="不燃・粗大(金属製以外は可燃ごみへ（金属製で１ｍ以内のものは資源回収へ）)">玄関マット（金属製）</option>
+<option value="不燃・粗大(紙等に包み、危険防止措置をして出す)">剣山（けんざん）</option>
+<option value="不燃・粗大">健康器具（ダンベル等）</option>
+<option value="収集不可">建築廃材</option>
+<option value="収集不可(二輪車リサイクルシステムへ)">原動機付自転車</option>
+<option value="可燃ごみ">こいのぼり</option>
+<option value="不燃・粗大">こいのぼり（風車のみ）</option>
+<option value="不燃・粗大">こいのぼり（ポール）風車付含む</option>
+<option value="不燃・粗大(事業用は収集不可。電気式は小型家電でも可)">高圧洗浄機</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">耕うん機</option>
+<option value="不燃・粗大(金属製は資源回収へ)">工具（金属・非金属）</option>
+<option value="可燃ごみ">ゴーグル</option>
+<option value="不燃・粗大">コーナーボード（金属・非金属）</option>
+<option value="不燃・粗大">コーヒーメーカー</option>
+<option value="収集不可(リサイクルマークがあるもの。家電販売店等の回収ボックス・回収缶へ)">小型充電式電池</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にしてヒモでしばり、【不用】と表示して出す。1mを超える場合は不燃・粗大ごみへ)">ござ</option>
+<option value="不燃・粗大">こたつ（一式）</option>
+<option value="不燃・粗大(オフィス用は収集不可。トナーは購入先または取扱店、製造メーカー等に返却)">コピー機（家庭用）</option>
+<option value="可燃ごみ(自転車のタイヤ、チューブは可)">ゴム製品（タイヤを除く）</option>
+<option value="不燃・粗大(プラスチック製で１ｍ以内のものは可燃ごみへ)">米びつ（金属・非金属）</option>
+<option value="不燃・粗大(大人が１人で持てる程度に縛る)">ゴルフクラブ</option>
+<option value="不燃・粗大(指定袋に入るもの、１m以内のものは【不用】と表示して可燃ごみへ)">ゴルフバッグ</option>
+<option value="可燃ごみ">ゴルフボール</option>
+<option value="資源回収">ごみ箱（金属製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">コンテナ（金属・非金属）</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">コンクリートブロック</option>
+<option value="不燃・粗大">サーフボード</option>
+<option value="不燃・粗大(木製で指定袋に入るもの、１ｍ以内のものは可燃ごみへ)">座椅子</option>
+<option value="不燃・粗大">サイドボード（金属・非金属）</option>
+<option value="不燃・粗大">柵（屋内用の危険防止柵）（金属・非金属）</option>
+<option value="集団回収(古紙類は、自治会・町内会で実施している集団古紙回収や民間事業者等へ)">雑誌</option>
+<option value="資源回収(中身は使い切って穴をあけて出す)">殺虫スプレー</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にしてヒモでしばり【不用】と表示して出す)">座布団</option>
+<option value="不燃・粗大">皿（ガラス製・陶器製）</option>
+<option value="資源回収">皿（金属製）</option>
+<option value="可燃ごみ">皿（プラスチック製・紙製・木製）</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">三脚（カメラ用）</option>
+<option value="可燃ごみ">サングラス（プラスチック製）</option>
+<option value="不燃・粗大(プラスチック製など可燃性のものは可燃ごみへ)">散水器</option>
+<option value="可燃ごみ">サンダル</option>
+<option value="不燃・粗大(プラスチック製で指定袋に入るもの、１ｍ以内のものは可燃ごみへ)">三輪車（子ども用）</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">シーツ</option>
+<option value="可燃ごみ">漆器</option>
+<option value="可燃ごみ">ＣＤ</option>
+<option value="不燃・粗大">ＣＤプレイヤー</option>
+<option value="不燃・粗大">シェーバー</option>
+<option value="不燃・粗大(洗浄液は抜いて出す)">シェーバー洗浄機</option>
+<option value="可燃ごみ">磁気カード</option>
+<option value="不燃・粗大">磁石（マグネット）</option>
+<option value="不燃・粗大">七輪</option>
+<option value="集団回収(布やビニール等で加工された表紙は可燃ごみで可)">辞典</option>
+<option value="不燃・粗大">自転車（二輪車・三輪車）</option>
+<option value="不燃・粗大(バッテリーは取り外して、販売店等へ)">自転車（電動アシスト付）</option>
+<option value="不燃・粗大">足こぎ自転車（子どもの玩具）</option>
+<option value="不燃・粗大">自転車空気入れ</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">自転車のかご（金属・非金属）</option>
+<option value="不燃・粗大(木製・プラスチック製は可燃ごみへ)">自転車のサドル（金属・非金属）</option>
+<option value="可燃ごみ(自転車のタイヤ（ホイール付）は不燃・粗大ごみへ。自動車のタイヤは不可（購入店または取扱店へ）)">自転車のタイヤチューブ</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">自転車の荷台（金属・非金属）</option>
+<option value="不燃・粗大(農業用・事業用は収集不可)">芝刈機（燃料式）</option>
+<option value="不燃・粗大(農業用・事業用は収集不可　電気式は小型家電も可)">芝刈機（電気式）</option>
+<option value="不燃・粗大">シルバーカー（荷物用手押し車）</option>
+<option value="資源回収">ジャムのびん</option>
+<option value="不燃・粗大(事業用は不可。電気式は小型家電でも可)">シュレッダー</option>
+<option value="不燃・粗大">ジューサー</option>
+<option value="収集不可(消火器リサイクル推進センター（03-5829-6773）へ相談)">消火器</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">障子</option>
+<option value="不燃・粗大(庭園灯、シーリングライト、ペンダントライト、卓上スタンド、アームスタンド等)">照明器具</option>
+<option value="不燃・粗大(コンプレッサー有（冷媒入）は不可。ただし、小型家電として出す場合はコンプレッサー有（冷媒入）でも可)">除湿機</option>
+<option value="可燃ごみ(水を抜いてから出す)">除湿剤</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">収納ケース、収納箱（金属・非金属）</option>
+<option value="不燃・粗大(内部の水を極力抜く)">浄水器（電気式）</option>
+<option value="可燃ごみ(金属製のものは不燃・粗大ごみへ)">浄水器のカートリッジ</option>
+<option value="可燃ごみ(固めるか、紙や布にしみこませて出す)">食用油</option>
+<option value="不燃・粗大">食器（ガラス製・陶器製・金属製）</option>
+<option value="不燃・粗大">食器乾燥機</option>
+<option value="不燃・粗大">食器洗浄機</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">食器棚</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">新聞紙</option>
+<option value="不燃・粗大">水槽（ガラス製）</option>
+<option value="可燃ごみ(長さ１ｍ以上のものは不燃・粗大ごみへ)">水槽（プラスチック製）</option>
+<option value="不燃・粗大(釜は錆がなければ資源回収へ)">炊飯器</option>
+<option value="可燃ごみ">水筒（プラスチック製）</option>
+<option value="資源回収">水筒（金属製）</option>
+<option value="可燃ごみ(指定袋に入らないものは【不用】と表示して出す。１ｍを超える大型のものは不燃・粗大ごみへ)">スーツケース（プラスチック製）</option>
+<option value="不燃・粗大">スキー板・ストック</option>
+<option value="可燃ごみ">スキー靴</option>
+<option value="不燃・粗大(可燃性のもので１ｍ以内のものは可燃ごみへ)">隙間家具・引出家具（金属・非金属）</option>
+<option value="不燃・粗大(事業所用は収集不可)">スキャナ</option>
+<option value="不燃・粗大">スクリーン・映写幕・銀幕</option>
+<option value="不燃・粗大(転がらないように注意して出す)">スケートボード</option>
+<option value="不燃・粗大">すだれ（金属製）</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にして【不用】と表示して束ねて出す)">すだれ（非金属）</option>
+<option value="不燃・粗大">スタンプ台（金属製）</option>
+<option value="不燃・粗大">ステッパー（健康器具）</option>
+<option value="不燃・粗大">ステレオセット</option>
+<option value="不燃・粗大(燃料は抜く。電池は外す。電池を使用しないものは小型家電不可)">ストーブ（石油）</option>
+<option value="不燃・粗大">ストーブ（電気）</option>
+<option value="収集不可">砂</option>
+<option value="不燃・粗大">スノーボード</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にして【不用】と表示して束ねて出す。1mを超える場合は不燃・粗大ごみへ)">すのこ</option>
+<option value="不燃・粗大">スピーカー</option>
+<option value="不燃・粗大(電気配線があるものは小型家電でも可)">スピーカーボックス</option>
+<option value="資源回収(中身を使い切って穴をあけて出す)">スプレー缶</option>
+<option value="資源回収">スプーン（金属製）</option>
+<option value="不燃・粗大">スプーン（陶器製）</option>
+<option value="可燃ごみ">スプーン（プラスチック製・木製）</option>
+<option value="不燃・粗大">ズボンプレッサー</option>
+<option value="不燃・粗大(ショップ等で回収している場合はできるだけそちらへ)">スマートフォン</option>
+<option value="可燃ごみ">炭</option>
+<option value="可燃ごみ">スリッパ</option>
+<option value="不燃・粗大(燃料は抜く。電池は外す。電池を使用しないものは小型家電不可)">石油ストーブ</option>
+<option value="不燃・粗大(燃料は抜く。電池は外す)">石油ファンヒーター</option>
+<option value="不燃・粗大">せともの</option>
+<option value="可燃ごみ">せっけん</option>
+<option value="可燃ごみ">洗剤の容器</option>
+<option value="可燃ごみ">扇子</option>
+<option value="収集不可(家電リサイクル法対象品)">洗濯機</option>
+<option value="資源回収">洗濯ばさみ（金属製）</option>
+<option value="可燃ごみ">洗濯ばさみ（非金属）</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にして束ねて出す。一度に１０袋又は１０束まで)">剪定枝・剪定くず</option>
+<option value="不燃・粗大(先端を紙等に包み、危険防止をして出す)">剪定ばさみ</option>
+<option value="不燃・粗大">扇風機</option>
+<option value="資源回収">洗面器（金属製）</option>
+<option value="可燃ごみ">洗面器（プラスチック製）</option>
+<option value="可燃ごみ">造花（プラスチック、紙、布）</option>
+<option value="不燃・粗大">掃除機</option>
+<option value="可燃ごみ">掃除機のパック</option>
+<option value="不燃・粗大(スプリングがなく、１ｍ以内のものは指定袋に入れるか、【不用】と表示して可燃ごみへ)">ソファー</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">そり（金属・非金属）</option>
+<option value="可燃ごみ">そろばん（木製、プラスチック製）</option>
+<option value="不燃・粗大(中が見える小袋等に入れ、他のものと分けて出す)">体温計（水銀あり）</option>
+<option value="不燃・粗大(電池入りは外す。電気式は小型家電でも可)">体温計（水銀なし）</option>
+<option value="不燃・粗大(電池入りは外す。電気式は小型家電でも可)">体重計</option>
+<option value="不燃・粗大">耐熱ガラス</option>
+<option value="不燃・粗大(縁台、調理台、テレビ台、踏み台、ミシン台、など。木製・プラスチック製などの可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">台（金属・非金属）</option>
+<option value="不燃・粗大">台車</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">タイヤ（車・バイク）</option>
+<option value="不燃・粗大">タイヤチェーン（金属製）</option>
+<option value="可燃ごみ">タイヤチェーン（ゴム製）</option>
+<option value="不燃・粗大(タイヤ付は収集不可)">タイヤホイール</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">タイル</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">タオル</option>
+<option value="不燃・粗大(刃の部分を紙等に包み、危険防止措置をして出す)">高枝切りばさみ</option>
+<option value="不燃・粗大(カウンター、座卓、食卓、テーブルなど)">卓（金属・非金属）</option>
+<option value="可燃ごみ(先端を紙等で包み、危険防止措置をして出す)">竹串</option>
+<option value="不燃・粗大(木製・プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">竹馬（金属・非金属）</option>
+<option value="可燃ごみ(個人で取り外したものに限る。1辺を1m以内に切断し、1度に2畳分まで)">たたみ</option>
+<option value="不燃・粗大">卓球台</option>
+<option value="可燃ごみ">脱臭剤</option>
+<option value="不燃・粗大">棚（金属）</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">棚（非金属）</option>
+<option value="不燃・粗大(販売店等で回収している場合はできるだけそちらへ)">タブレット</option>
+<option value="可燃ごみ">卵のパック（プラスチック製）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">卵のパック（紙製）</option>
+<option value="不燃・粗大(プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">たらい（金属製）</option>
+<option value="資源回収(金属製以外は可燃ごみへ)">たわし（金属製）</option>
+<option value="不燃・粗大">ダンベル・鉄アレイ</option>
+<option value="不燃・粗大(可燃性のもので解体して１ｍ以内であれば可燃ごみでも可)">タンス・チェスト（金属・非金属）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">段ボール</option>
+<option value="不燃・粗大(可燃性のものは可燃ごみへ)">地球儀</option>
+<option value="不燃・粗大(プラスチック製などの可燃性で、１m以内のものは可燃ごみへ)">チャイルドシート（車用品）</option>
+<option value="可燃ごみ(水分をよく切って出す)">茶がら</option>
+<option value="資源回収">茶筒（金属製）</option>
+<option value="可燃ごみ">茶筒（非金属）</option>
+<option value="収集不可(かかりつけの医療機関へ)">注射器（針付）</option>
+<option value="可燃ごみ(衛生上の観点から、新聞紙等に包んで可燃ごみへ)">注射筒（針以外の部分）</option>
+<option value="可燃ごみ">調味料の容器（プラスチック製）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">チラシ</option>
+<option value="可燃ごみ">使い捨てカイロ</option>
+<option value="不燃・粗大(使いきって、中が見える小袋等に入れ、他のものと分けて出す)">使い捨てライター</option>
+<option value="不燃・粗大(木製などの可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">机（金属製・非金属）</option>
+<option value="不燃・粗大(石は不可（購入店または取扱店に相談）)">漬物の重し</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">土（園芸用・培養土を含む）</option>
+<option value="不燃・粗大(可燃性で１ｍ以内のものは可燃ごみへ)">突っ張り棚</option>
+<option value="不燃・粗大(可燃性で１ｍ以内のものは可燃ごみへ)">突っ張り棒</option>
+<option value="不燃・粗大(可燃性で１ｍ以内のものは可燃ごみへ)">釣竿</option>
+<option value="可燃ごみ">つみき</option>
+<option value="不燃・粗大">つめ切り</option>
+<option value="可燃ごみ">ＤＶＤ</option>
+<option value="不燃・粗大">ＤＶＤプレーヤー</option>
+<option value="集団回収(ビニール部分は可燃ごみへ)">ティッシュペーパーの箱</option>
+<option value="不燃・粗大">手提げ金庫</option>
+<option value="不燃・粗大">鉄板</option>
+<option value="不燃・粗大">鉄アレイ・ダンベル</option>
+<option value="不燃・粗大">手押し車・シルバーカー（荷物用）</option>
+<option value="可燃ごみ">テニスラケット</option>
+<option value="収集不可(家電リサイクル法対象品)">テレビ（液晶・プラズマ・ブラウン管）</option>
+<option value="不燃・粗大(木製などの可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">テレビ台（金属・非金属）</option>
+<option value="可燃ごみ">テレホンカード</option>
+<option value="不燃・粗大">電気スタンド</option>
+<option value="不燃・粗大">電気ストーブ</option>
+<option value="不燃・粗大">電気コード</option>
+<option value="不燃・粗大">電気毛布</option>
+<option value="不燃・粗大(折りたたんで縛って出す)">電気カーペット</option>
+<option value="不燃・粗大(電池は外して出す)">電気ポット</option>
+<option value="不燃・粗大">電気ファンヒーター</option>
+<option value="不燃・粗大">電球</option>
+<option value="不燃・粗大">電子レンジ</option>
+<option value="不燃・粗大">電子辞書</option>
+<option value="不燃・粗大">電磁調理器（IH)</option>
+<option value="不燃・粗大">電卓</option>
+<option value="不燃・粗大(バッテリーは収集不可)">電動車イス</option>
+<option value="不燃・粗大">電動工具</option>
+<option value="不燃・粗大(バッテリーは取り外して、販売店等へ)">電動自転車</option>
+<option value="不燃・粗大">電動ハブラシ</option>
+"<option value=""不燃・粗大(セミダブル（幅１４０ｃｍ未満）までは不燃・粗大ごみとして申し込み可。
+ダブルサイズは清掃工場（沼上または西ケ谷）に持込みの場合のみ受け入れ可能。それ以上は販売店または製造メーカーに相談)"">電動ベッド</option>"
+<option value="不燃・粗大(電池は外す　携帯電話・PHSはできるだけ販売店へ)">電話機（携帯電話・PHSを含む）</option>
+<option value="不燃・粗大">天体望遠鏡</option>
+<option value="不燃・粗大">テント（キャンプ用含む）</option>
+<option value="不燃・粗大">ドア（金属製）</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">ドア（非金属）</option>
+<option value="可燃ごみ">トイレブラシ（プラスチック製）</option>
+<option value="不燃・粗大">陶器製品</option>
+<option value="収集不可(購入店または取扱店に相談)">灯油</option>
+<option value="可燃ごみ">灯油ポンプ（手動式）</option>
+<option value="不燃・粗大">灯油ポンプ（電動式）</option>
+<option value="可燃ごみ(１ｍを超えるものは不燃・粗大ごみへ)">籐製品</option>
+<option value="不燃・粗大(電池式は小型家電でも可)">時計</option>
+<option value="不燃・粗大">トースター</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">トタン（金属製・スチール製）</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にして束ね、【不用】と表示して出す。1m超になるものは不燃・粗大ごみへ)">トタン（プラスチック製）</option>
+<option value="不燃・粗大">土鍋</option>
+<option value="不燃・粗大">ドライヤー</option>
+<option value="不燃・粗大">トランポリン</option>
+<option value="不燃・粗大">ドレッサー・鏡台</option>
+<option value="収集不可(購入店または取扱店に相談。布にしみ込ませれば可燃ごみでも可)">塗料（ペンキ）</option>
+<option value="可燃ごみ(金属製は不燃・粗大ごみへ)">トレイ（プラスチック製）</option>
+<option value="可燃ごみ">長靴</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">流し台（ステンレス・木製）</option>
+<option value="収集不可(購入店または取扱店に相談)">流し台（システムキッチン）</option>
+<option value="資源回収">なべ（金属製）</option>
+<option value="不燃・粗大(中身を空にして出す)">生ごみ処理機（電気式以外）</option>
+<option value="不燃・粗大(中身を空にして出す)">生ごみ処理機（電気式）</option>
+<option value="資源回収">入浴剤の容器（金属製）</option>
+<option value="不燃・粗大">人形ケース・ひな壇</option>
+<option value="不燃・粗大(ケース入り、五月人形、雛人形など。人形単体は、可燃性のものは可燃ごみでも可)">人形</option>
+<option value="可燃ごみ(指定袋に入れるか、【不用】と表示して出す)">ぬいぐるみ</option>
+<option value="不燃・粗大(ふた付きの缶に入れる・紙に包む等、危険防止措置をして出す)">縫い針</option>
+<option value="可燃ごみ">布くず</option>
+<option value="可燃ごみ">ネコ砂</option>
+<option value="不燃・粗大(ふた付きの缶に入れる・紙に包む等、危険防止措置をして出す)">ネジ</option>
+<option value="可燃ごみ">粘着カーペットクリーナー（シート紙）</option>
+<option value="可燃ごみ">粘土</option>
+<option value="不燃・粗大(事業用は収集不可)">農工具</option>
+<option value="不燃・粗大(刃を紙等に包み、危険防止措置をして出す)">のこぎり</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">農薬</option>
+<option value="収集不可(パソコンリサイクル対象品　ただし、小型家電でも可)">ノート型パソコン</option>
+<option value="不燃・粗大">ハーモニカ</option>
+<option value="不燃・粗大">バーベル（健康器具）</option>
+<option value="不燃・粗大">バーベルの支え（健康器具）</option>
+<option value="可燃ごみ(水に濡らしてから出す)">灰</option>
+<option value="資源回収">灰皿（金属製）</option>
+<option value="可燃ごみ">灰皿（非金属）</option>
+<option value="収集不可(二輪車リサイクルシステムへ)">バイク（原付バイクを含む）</option>
+<option value="収集不可(処分業者等へ依頼)">廃材（増改築等で出た物）</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">廃油（オイル類）</option>
+<option value="可燃ごみ(金属部分は不燃・粗大ごみへ)">バインダー（文具）</option>
+<option value="不燃・粗大">パイプハンガー（金属・非金属）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">はがき</option>
+<option value="不燃・粗大(電池は外す。電気式は小型家電でも可)">はかり（家庭用）</option>
+<option value="可燃ごみ">ハケ</option>
+<option value="資源回収">バケツ（金属製）</option>
+<option value="可燃ごみ">バケツ（非金属）</option>
+<option value="不燃・粗大(刃は紙等に包み、危険防止措置をして出す)">ハサミ</option>
+<option value="不燃・粗大">はしご</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">バスタブ</option>
+<option value="収集不可(パソコンリサイクル対象品　ただし、小型家電として持ち込み可能)">パソコン</option>
+<option value="不燃・粗大">パソコン周辺機器（キーボード）</option>
+<option value="不燃・粗大">パソコン周辺機器（外付けハードディスク）</option>
+<option value="収集不可(パソコンリサイクル対象品　ただし、小型家電として持ち込み可能)">パソコン周辺機器（ディスプレイ）</option>
+<option value="不燃・粗大">パソコン周辺機器（ハブ）</option>
+<option value="不燃・粗大">パソコン周辺機器（無線ＬＡＮ）</option>
+<option value="不燃・粗大">パソコン周辺機器（ルーター）</option>
+<option value="不燃・粗大(可燃性のものは、可燃ごみでも可)">鉢</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">発煙筒</option>
+<option value="不燃・粗大">バット（金属製）</option>
+<option value="可燃ごみ">バット（木製、プラスチック製）</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">バッテリー</option>
+<option value="可燃ごみ(事業用は収集不可)">発砲スチロール</option>
+<option value="可燃ごみ(水で湿らせて出す)">花火</option>
+<option value="不燃・粗大">パネルヒーター</option>
+<option value="不燃・粗大">パラソル</option>
+<option value="可燃ごみ">歯ブラシ</option>
+<option value="不燃・粗大">歯ブラシ（電動式）</option>
+<option value="不燃・粗大">ハロゲンヒーター</option>
+<option value="資源回収">ハンガー（金属製）</option>
+<option value="可燃ごみ">ハンガー（プラスチック製・木製）</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">ピアノ</option>
+<option value="不燃・粗大">ピアニカ</option>
+<option value="不燃・粗大(袋等に入れて出す)">ビー玉</option>
+<option value="不燃・粗大(刃は紙等に包み、危険防止措置をして出す)">ひげそり</option>
+<option value="不燃・粗大">ビデオカメラ</option>
+<option value="可燃ごみ">ビデオテープ</option>
+<option value="不燃・粗大">ビデオデッキ</option>
+<option value="可燃ごみ">ビニール袋</option>
+<option value="不燃・粗大">火鉢</option>
+<option value="資源回収(中身を使い切り、水洗いして出す。割れたびん、化粧品のびんは不燃・粗大ごみへ)">びん（飲食用・調味料）</option>
+<option value="不燃・粗大(電池は外して出す)">ファックス機（家庭用）</option>
+<option value="不燃・粗大(灯油、電池を抜いて出す)">ファンヒーター</option>
+<option value="可燃ごみ">フィルム、フィルムケース</option>
+<option value="不燃・粗大(個人で取り外したものに限る。解体して１ｍ以内であれば可燃ごみでも可)">ふすま</option>
+<option value="不燃・粗大">腹筋マシン（健康器具）</option>
+<option value="不燃・粗大">仏壇</option>
+<option value="可燃ごみ">筆</option>
+<option value="可燃ごみ(指定袋に入れるか、たたんでヒモでしばり【不用】と表示して出す)">布団</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">布団カバー</option>
+<option value="不燃・粗大(布団を入れるビニール袋は可燃ごみへ)">布団乾燥機</option>
+<option value="不燃・粗大">フードプロセッサー</option>
+<option value="資源回収">フライパン</option>
+<option value="不燃・粗大">ブラインド（金属・非金属）</option>
+<option value="可燃ごみ">プラスチックケース</option>
+<option value="可燃ごみ">プラモデル</option>
+<option value="可燃ごみ(１ｍを超えるものは不燃・粗大ごみへ)">プランター（木製、プラスチック製）</option>
+<option value="不燃・粗大">ぶら下り健康器（健康器具）</option>
+<option value="不燃・粗大(インクカートリッジは販売店等の回収箱へ)">プリンタ（家庭用）</option>
+<option value="可燃ごみ">BD（ブルーレイディスク）</option>
+<option value="不燃・粗大">BDプレーヤー</option>
+<option value="不燃・粗大">BDレコーダー</option>
+<option value="不燃・粗大">プロジェクター</option>
+<option value="不燃・粗大">風呂釜</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">風呂敷（布）</option>
+<option value="可燃ごみ">風呂敷（ビニール）</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にしてヒモでしばり、【不用】と表示して出す　1mを超える場合は不燃・粗大ごみへ)">風呂のふた（木製、プラスチック製）</option>
+<option value="可燃ごみ">ＦＤ（フロッピーディスク）</option>
+<option value="不燃・粗大(可燃性のもので解体して１ｍ以内であれば可燃ごみでも可)">譜面立（金属・非金属）</option>
+<option value="不燃・粗大(事業用は不可　電動式は小型家電でも可)">噴霧器（電動・エンジン式）</option>
+<option value="可燃ごみ(１ｍを超えるものは不燃・粗大ごみへ)">噴霧器（手動・非金属）</option>
+<option value="不燃・粗大">ヘアピン</option>
+<option value="可燃ごみ">ヘアーブラシ</option>
+"<option value=""不燃・粗大(セミダブル（幅１４０ｃｍ未満）までは不燃・粗大ごみとして申し込み可。
+ダブルサイズは清掃工場（沼上または西ケ谷）に持込みの場合のみ受け入れ可能。それ以上は販売店または製造メーカーに相談)"">ベッド</option>"
+<option value="不燃・粗大">ヘッドホン</option>
+"<option value=""拠点回収(中身を使い切り、水洗いして出す（キャップは外す）　
+回収拠点一覧はこちら)"">ペットボトル（飲料・調味料）</option>"
+<option value="不燃・粗大(可燃性のもので解体して１ｍ以内であれば可燃ごみでも可)">ペット用品（犬小屋、かご、檻）</option>
+<option value="可燃ごみ(１ｍを超えるものは不燃・粗大ごみへ)">ベニヤ板</option>
+<option value="不燃・粗大">ベビーカー</option>
+<option value="不燃・粗大">ヘルスメーター</option>
+<option value="可燃ごみ(取り外しが可能なバックルは不燃・粗大ごみへ)">ベルト</option>
+<option value="可燃ごみ">ヘルメット（プラスチック製）</option>
+<option value="不燃・粗大">ベンチプレスの台（健康器具）</option>
+<option value="収集不可(購入店または取扱店に相談。紙や布にしみこませれば可燃ごみでも可)">ペンキ</option>
+<option value="資源回収(中身をふき取って出す。錆や汚れがひどいものは不燃・粗大ごみへ)">ペンキの缶</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">便器（陶器製）</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">便座（陶器製）</option>
+<option value="可燃ごみ">便座（プラスチック製）</option>
+<option value="不燃・粗大(タイヤ付は不可)">ホイール（自動車）</option>
+<option value="可燃ごみ">ほうき</option>
+<option value="可燃ごみ">帽子</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">包装紙</option>
+<option value="不燃・粗大(刃は紙等に包んで、危険防止措置をして出す)">包丁</option>
+<option value="不燃・粗大(可燃性で指定袋に入るもの、１ｍ以内のものは可燃ごみへ)">防具（スポーツ用）</option>
+<option value="不燃・粗大">ボウリングの球</option>
+<option value="資源回収">ボウル（金属製）</option>
+<option value="可燃ごみ">ホース</option>
+<option value="可燃ごみ(金属製のものは不燃・粗大ごみへ)">ホースリール</option>
+<option value="可燃ごみ(空気を抜けるものは抜く)">ボール（球）</option>
+<option value="資源回収">ホーロー鍋</option>
+<option value="不燃・粗大">ホームベーカリー</option>
+<option value="不燃・粗大">歩行器（大人用、子ども用）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">ポスター</option>
+<option value="不燃・粗大(可燃性のものは可燃ごみでも可)">ポスト（金属・非金属）</option>
+<option value="収集不可(家電販売店等の回収ボックス・回収缶へ)">ボタン電池（型式ＳＲ・ＰＲ・ＬＲ）</option>
+<option value="不燃・粗大(小袋等に入れ、他の不燃・粗大ごみと分けて出す)">ボタン電池（型式ＣＲ・ＢＲ）</option>
+<option value="不燃・粗大">ポット（電気式）</option>
+<option value="不燃・粗大">ポット（電気式以外）</option>
+<option value="不燃・粗大">ホットカーペット</option>
+<option value="不燃・粗大">ホットカーラー</option>
+<option value="不燃・粗大">ホットプレート</option>
+<option value="不燃・粗大">哺乳びん（ガラス製）</option>
+<option value="可燃ごみ">哺乳びん（プラスチック製）</option>
+<option value="可燃ごみ(指定袋に入れるか、【不用】と表示して出す)">ポリタンク</option>
+<option value="不燃・粗大">ボルト</option>
+<option value="可燃ごみ">保冷剤</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">本</option>
+<option value="不燃・粗大">本棚（金属製）</option>
+<option value="不燃・粗大(解体して１ｍ以内であれば可燃ごみでも可)">本棚（木製）</option>
+<option value="不燃・粗大">マウス</option>
+<option value="不燃・粗大(可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">マガジンラック（金属・非金属）</option>
+<option value="可燃ごみ(指定袋に入れるか、【不用】と表示して出す)">枕</option>
+<option value="可燃ごみ">マスク</option>
+<option value="不燃・粗大">マッサージ機（電気式）</option>
+<option value="不燃・粗大">マッサージチェア</option>
+<option value="可燃ごみ(指定袋に入れるか、たたんでヒモでしばり【不用】と表示して出す)">マット（ウレタンマット等）</option>
+"<option value=""不燃・粗大(セミダブル（幅１４０ｃｍ未満）までは不燃・粗大ごみとして申し込み可。
+ダブルサイズは清掃工場（沼上または西ケ谷）に持込みの場合のみ受け入れ可能。それ以上は販売店または製造メーカーに相談)"">マットレス（スプリングあり）</option>"
+<option value="可燃ごみ(指定袋に入れるか、たたんでヒモでしばり【不用】と表示して出す)">マットレス（スプリングなし）</option>
+<option value="可燃ごみ">まな板</option>
+<option value="不燃・粗大(中身を使い切って出す)">マニキュアのびん</option>
+<option value="不燃・粗大">ミキサー</option>
+<option value="不燃・粗大(電動式は小型家電でも可)">ミシン</option>
+<option value="不燃・粗大(可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">ミシン台</option>
+<option value="不燃・粗大(すべてプラスチックでできたものは可燃ごみへ)">虫めがね</option>
+<option value="可燃ごみ(それ以外の素材は不燃・粗大ごみへ)">めがね（プラスチック製）</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ)">メモ用紙</option>
+<option value="可燃ごみ(指定袋に入れるか、たたんでヒモでしばり【不用】と表示して出す)">毛布（電気式以外）</option>
+<option value="不燃・粗大">毛布（電気式）</option>
+<option value="可燃ごみ">木炭</option>
+<option value="不燃・粗大">餅つき機</option>
+<option value="可燃ごみ(柄は、不燃・粗大ごみへ)">モップ</option>
+<option value="不燃・粗大">モデルガン（非金属）</option>
+<option value="不燃・粗大">モデルガン（金属製）</option>
+<option value="不燃・粗大(一坪サイズ以内の、解体済のものに限る　金属製は分別収集)">物置</option>
+<option value="不燃・粗大(可燃性のものは、解体して１ｍ以内であれば可燃ごみでも可)">物干し竿（金属・非金属）</option>
+<option value="不燃・粗大(コンクリート付きも可)">物干し台（金属・非金属）</option>
+<option value="資源回収">やかん</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">薬品（農薬・劇薬等）の容器</option>
+<option value="可燃ごみ(自治会・町内会等で実施している集団回収で集めている場合はできるだけそちらへ)">浴衣</option>
+<option value="資源回収">湯たんぽ（金属製）</option>
+<option value="可燃ごみ">湯たんぽ（プラスチック製、ゴム製）</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">湯沸かし器</option>
+<option value="可燃ごみ(事業用は収集不可)">養生シート</option>
+<option value="資源回収">ヨーグルトのびん</option>
+<option value="不燃・粗大(個人で取り外したものに限る)">浴槽</option>
+<option value="可燃ごみ(指定袋に入れるか、1m以内にして束ねて出す)">よしず</option>
+<option value="不燃・粗大(中が見える小袋等に入れ、他のものと分けて出す)">ライター</option>
+<option value="不燃・粗大(電池は外す)">ラジオ・ラジカセ</option>
+<option value="可燃ごみ">ラップ</option>
+<option value="集団回収(古紙類は、自治会・町内会等で実施している集団古紙回収や民間事業者等へ。金具はとる)">ラップの箱</option>
+<option value="不燃・粗大">ランニングマシン（健康器具）</option>
+<option value="可燃ごみ">ランドセル</option>
+<option value="不燃・粗大">リール（釣り具）</option>
+<option value="可燃ごみ">リコーダー</option>
+<option value="不燃・粗大(電池は外す)">リモコン</option>
+<option value="不燃・粗大(事業用は収集不可)">リヤカー</option>
+<option value="不燃・粗大">ルーフボックス（車用品）</option>
+<option value="収集不可(家電リサイクル法対象品)">冷蔵庫・冷凍庫</option>
+<option value="不燃・粗大">レコードプレイヤー</option>
+<option value="可燃ごみ(指定袋に入れるか、たたんでヒモでしばり【不用】と表示して出す)">レジャーシート</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">レンガ</option>
+<option value="不燃・粗大(木製やプラスチック製などの可燃性で、解体して１ｍ以内であれば可燃ごみでも可)">レンジ台</option>
+<option value="可燃ごみ">ロープ（ワイヤーは除く）</option>
+<option value="不燃・粗大">ローイングマシン（健康器具）</option>
+<option value="不燃・粗大">ロースター</option>
+<option value="不燃・粗大(木製やプラスチック製などの可燃性で、解体して１ｍ以内であれば可燃ごみでも可)">ローボード（金属・非金属）</option>
+<option value="不燃・粗大(木製やプラスチック製などの可燃性で、解体して１ｍ以内であれば可燃ごみでも可)">ロッカー（金属・非金属）</option>
+<option value="不燃・粗大">ロッキングチェア</option>
+<option value="不燃・粗大(電池は外す)">ワープロ</option>
+<option value="収集不可(購入店または取扱店、製造メーカーに相談)">ワイヤー</option>
+<option value="可燃ごみ">割り箸</option>
+
+
+					</select>
+					<br>
+					<div>上記のゴミ分類は<div id = hinmoku2></div>です。</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="accordion" id="accordion3">
+		<div class="accordion-group-top">
+			<div class="accordion-heading">
+				<a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse4_1">このアプリの使い方</a>
+			</div>
+			<div id="collapse4_1" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<div id="help">
+					<h3>使い方</h3>
+					<p>お住まいの地域を選択して下さい。</p>
+					<p>一番近いゴミの日とジャンルが上から順に表示されます。</p>
+					<p>ゴミのジャンルをタップすると、捨てることが可能なゴミの一覧を見ることができます</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="accordion" id="accordion3">
+		<div class="accordion-group-top">
+			<div class="accordion-heading">
+				<a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse5_1">データとライセンス</a>
+			</div>
+			<div id="collapse5_1" class="accordion-body collapse">
+				<div class="accordion-inner">
+				<div >
+					<h3>提供されるゴミ情報について</h3>
+					<p>静岡市が<a href="http://open.city.shizuoka.jp/" style=" color: #FF0000;text-decoration: underline;">シズオカ オープンデータ ポータル</a>にて公開している各種オープンデータを元にアプリに実装しました。</p>
+					<h3>ライセンスについて</h3>
+					<p>本アプリの著作権はCode for Kanazawaに帰属します。</p>
+					<h3>Code for Kanazawaについて</h3>
+					<p>コードで、世界をHappyに。<br />
+					各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
+					課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br />
+					Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
+					私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br />
+					CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
+					公式サイト<br />
+					<a href="http://www.codeforkanazawa.org/" style=" color: #FF0000;text-decoration: underline;">http://www.codeforkanazawa.org/</a>
+					</p>
+				</div>
+
+				<div id="contributors">
+					<h3>Contributors in 静岡市清水区(由比・蒲原以外)版</h3>
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+            
   <!-- JavaScript plugins (requires jQuery) -->
   <script src="js/jquery-1.10.2.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -70,13 +742,16 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
   <script src="js/bookmark-bubble/example/example.min.js"></script>
   <script src="js/setting.js"></script>
   <script src="js/script.js"></script>
-  <script>
+  <script src="js/hinmoku.js"></script> 
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-43926409-1', '5374.jp');
+
+  ga('create', 'UA-69474108-1', 'auto');
   ga('send', 'pageview');
-  </script>
+
+</script>
   </body>
 </html>
